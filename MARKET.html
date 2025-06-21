@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artisanat du Mali - Boutique</title>
+  <style>
+    :root {
+      --brun: #7b3f00;
+      --beige: #fdfaf6;
+      --or: #ffcc00;
+      --texte: #333;
+      --clair: #fcf9f3;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--beige);
+      color: var(--texte);
+    }
+
+    header {
+      background-color: var(--brun);
+      color: white;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    header nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--or);
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1604671801902-6b5ef3a0e51f') center/cover no-repeat;
+      padding: 120px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .hero .btn {
+      background-color: var(--or);
+      padding: 12px 30px;
+      color: var(--texte);
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 30px;
+    }
+
+    .produits {
+      padding: 60px 20px;
+      background-color: white;
+      text-align: center;
+    }
+
+    .produits h2 {
+      color: var(--brun);
+      margin-bottom: 40px;
+      font-size: 2.5em;
+    }
+
+    .grille {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .produit {
+      background: var(--clair);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.3s;
+    }
+
+    .produit:hover {
+      transform: translateY(-5px);
+    }
+
+    .produit img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .produit h3 {
+      margin: 10px 0;
+      color: var(--brun);
+    }
+
+    .prix {
+      font-weight: bold;
+      color: #e67e22;
+    }
+
+    .produit button {
+      background: var(--brun);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .apropos, .temoignages, .contact {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: var(--beige);
+    }
+
+    .apropos p, .contact p {
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .temoignages .avis {
+      max-width: 1000px;
+      margin: 30px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .temoignage {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      flex: 1 1 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .temoignage p {
+      font-style: italic;
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: 30px auto 0;
+    }
+
+    .contact input, .contact textarea {
+      padding: 12px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .contact button {
+      background: var(--brun);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    .reseaux {
+      margin-top: 15px;
+    }
+
+    .reseaux a {
+      margin: 0 10px;
+      color: white;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .galerie {
+      max-width: 1000px;
+      margin: 0 auto 40px;
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      padding: 0 20px;
+    }
+
+    .galerie img {
+      height: 150px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .galerie img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div><strong>Artisanat du Mali</strong></div>
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#produits">Produits</a></li>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="accueil" class="hero">
+    <h1>Objets artisanaux uniques du Mali</h1>
+    <p>Créés avec passion, inspirés de la tradition.</p>
+    <a href="#produits" class="btn">Voir les produits</a>
+  </section>
+
+  <section id="produits" class="produits">
+    <h2>Nos produits</h2>
+    <div class="grille">
+  <div class="produit">
+      <img src="C:\Users\abdalah\OneDrive\Desktop\photos\1.jpeg" alt="Panier Tressé ,Éclat Naturel et Élégance">
+      <h3>Panier Tressé</h3>
+      <p>Ce panier en osier, confectionné à la main avec un savoir-faire traditionnel, allie robustesse et élégance. Idéal pour apporter une touche rustique et authentique à votre intérieur.</p>
+      <span class="prix">11000 FCFA</span><br>
+      <button>Ajouter au panier</button>
+  </div>
+
+  <div class="produit">
+      <img src="C:\Users\abdalah\OneDrive\Desktop\photos\2.jpeg" alt="calebasse en bois avec motifs traditionnels">
+      <h3>calebasse en bois</h3>
+      <p>Cette calebasse, ornée de motifs traditionnels, est un exemple parfait de l'artisanat malien. Chaque pièce est unique et raconte une histoire.</p>
+      <span class="prix">12000 FCFA</span><br>
+      <button>Ajouter au panier</button>
+  </div>
+
+  <div class="produit">
+      <img src="C:\Users\abdalah\OneDrive\Desktop\photos\3.jpeg" alt="bogolan traditionnel">
+      <h3>bogolan traditionnel</h3>
+      <p>Ce tissu, teint à la main avec des pigments naturels, est un symbole de l'identité malienne. Chaque motif raconte une histoire et reflète un savoir-faire ancestral.</p>
+      <span class="prix">15000 FCFA</span><br>
+      <button>Ajouter au panier</button>
+  </div>
+
+  <div class="produit">
+      <img src="C:\Users\abdalah\OneDrive\Desktop\photos\4.jpeg" alt="coussin en tissu bogolan et rembourrage naturel">
+      <h3>coussin en tissu bogolan et rembourrage naturel</h3>
+      <p>Ce coussin, fabriqué à partir de tissu bogolan traditionnel, offre un confort optimal tout en ajoutant une touche d'authenticité à votre décoration intérieure.</p>
+      <span class="prix">14000 FCFA</span><br>
+      <button>Ajouter au panier</button>
+  </div>
+
+  <div class="produit">
+      <img src="C:\Users\abdalah\OneDrive\Desktop\photos\5.jpeg" alt="bogolan traditionnel">
+      <h3>bogolan traditionnel</h3>
+      <p>Ce tissu, teint à la main avec des pigments naturels, est un symbole de l'identité malienne. Chaque motif raconte une histoire et reflète un savoir-faire ancestral.</p>
+      <span class="prix">15000 FCFA</span><br>
+      <button>Ajouter au panier</button>
+  </div>
+
+  <div class="produit">
+      <img src="C:\Users\abdalah\OneDrive\Desktop\photos\6.jpeg" alt="calebasse malienne">
+      <h3>calebasse malienne</h3>
+      <p>Cette calebasse, ornée de motifs traditionnels, est un exemple parfait de l'artisanat malien. Chaque pièce est unique et raconte une histoire.</p>
+      <span class="prix">16000 FCFA</span><br>
+      <button>Ajouter au panier</button>
+  </div>
+
+  <div class="produit">
+      <img src="C:\Users\abdalah\OneDrive\Desktop\photos\7.jpeg" alt="calebasse malienne simple">
+      <h3>calebasse malienne simple</h3>
+      <p>Cette calebasse, d'une simplicité élégante, est parfaite pour une utilisation quotidienne. Chaque pièce est unique et témoigne du savoir-faire artisanal malien.</p>
+      <span class="prix">7000 FCFA</span><br>
+      <button>Ajouter au panier</button>
+  </div>
+
+  <div class="produit">
+      <img src="C:\Users\abdalah\OneDrive\Desktop\photos\8.jpeg" alt="tissus bogolan artisanaux">
+      <h3>tissus bogolan artisanaux</h3>
+      <p>Ces tissus, teintés à la main avec des pigments naturels, sont un symbole de l'identité malienne. Chaque motif raconte une histoire et reflète un savoir-faire ancestral.</p>
+      <span class="prix">18000 FCFA</span><br>
+      <button>Ajouter au panier</button>
+  </div>
+
+  <div class="produit">
+      <img src="C:\Users\abdalah\OneDrive\Desktop\photos\9.jpeg" alt="bracelet artisanal">
+      <h3>bracelet artisanal</h3>
+      <p>Ces bracelets, fabriqués à la main avec des perles en bois et d'autres matériaux, et des motifs traditionnels, sont des accessoires uniques qui ajoutent une touche d'authenticité à votre style.</p>
+      <span class="prix">19000 FCFA</span><br>
+      <button>Ajouter au panier</button>
+  </div>
+
+  <div class="produit">
+      <img src="C:\Users\abdalah\OneDrive\Desktop\photos\10.jpeg" alt="vase en céramique">
+      <h3>vase en céramique</h3>
+      <p>Ce vase, réalisé en céramique artisanale, apporte une touche d'élégance à votre intérieur. Chaque pièce est unique et témoigne du savoir-faire des artisans maliens.</p>
+      <span class="prix">20000 FCFA</span><br>
+      <button>Ajouter au panier</button>
+  </div>
+
+  <div class="produit">
+      <img src="C:\Users\abdalah\OneDrive\Desktop\photos\11.jpeg" alt="sac en tissu bogolan et nattes">
+      <h3>sac en tissu bogolan et nattes</h3>
+      <p>Ce sac, alliant tissu bogolan et nattes, est à la fois pratique et esthétique. Chaque pièce est unique et reflète le savoir-faire artisanal malien.</p>
+      <span class="prix">21000 FCFA</span><br>
+      <button>Ajouter au panier</button>
+  </div>
+
+  <div class="produit">
+      <img src="C:\Users\abdalah\OneDrive\Desktop\photos\12.jpeg" alt="bouillards artisanale tassalé">
+      <h3>bouillards artisanale tassalé</h3>
+      <p>Ces bouillards, fabriqués à la main avec des matériaux naturels, sont parfaits pour la cuisson traditionnelle. Chaque pièce est unique et témoigne du savoir-faire artisanal malien.</p>
+      <span class="prix">22000 FCFA</span><br>
+      <button>Ajouter au panier</button>
+  </div>
+
+  <div class="produit">
+      <img src="C:\Users\abdalah\OneDrive\Desktop\photos\13.jpeg" alt="sac traditionnel">
+      <h3>sac traditionnel</h3>
+      <p>Ce sac, réalisé en tissu traditionnel, est à la fois pratique et esthétique. Chaque pièce est unique et témoigne du savoir-faire artisanal malien.</p>
+      <span class="prix">23000 FCFA</span><br>
+      <button>Ajouter au panier</button>
+  </div>
+</div>
+
+  </section>
+
+  
+  <section id="apropos" class="apropos">
+    <h2>À propos</h2>
+    <p>Notre mission est de valoriser l’artisanat malien à travers une plateforme moderne. Chaque produit raconte une histoire, soutient un artisan, et fait rayonner la culture africaine.</p>
+  </section>
+
+  <section class="temoignages">
+    <h2>Témoignages</h2>
+    <div class="avis">
+      <div class="temoignage">
+        <p>“Produit magnifique, qualité exceptionnelle !”</p>
+        <strong>-Mme keita.</strong>
+      </div>
+      <div class="temoignage">
+        <p>“J’ai reçu mon colis en 3 jours. Très bien emballé !”</p>
+        <strong>-ousmane traoré.</strong>
+      </div>
+      <div class="temoignage">
+        <p>“Un beau cadeau culturel pour mes amis européens.”</p>
+        <strong>- Fatou Sow.</strong>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Pour toute demande, suggestion ou commande spéciale :</p>
+    <form>
+      <input type="text" placeholder="Nom complet" required>
+      <input type="email" placeholder="Email" required>
+      <textarea rows="4" placeholder="Message"></textarea>
+      <input type="text" placeholder="Numéro de téléphone" required>
+      <input type="text" placeholder="Adresse de livraison" required>
+      <input type="text" placeholder="Ville" required>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Artisanat du Mali — Tous droits réservés.</p>
+    <div class="reseaux">
+      <a href="https://wa.me/+22391750429" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://instagram.com/toncompte" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://t.me/toncompte" target="_blank"><i class="fab fa-telegram"></i></a>
+    </div>
+  </footer>
+
+</body>
+</html>
